@@ -256,8 +256,8 @@ body.light-hero .why-sec .wcard{background:var(--g50)}
 .marquee-row::before{left:0;background:linear-gradient(90deg,var(--white),transparent)}
 .marquee-row::after{right:0;background:linear-gradient(270deg,var(--white),transparent)}
 .marquee-track{display:flex;gap:16px;width:max-content}
-.marquee-row.right .marquee-track{animation:scrollRight 45s linear infinite}
-.marquee-row.left .marquee-track{animation:scrollLeft 50s linear infinite}
+.marquee-row.right .marquee-track{animation:scrollRight 105s linear infinite}
+.marquee-row.left .marquee-track{animation:scrollLeft 115s linear infinite}
 .marquee-row:hover .marquee-track{animation-play-state:paused}
 @keyframes scrollRight{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes scrollLeft{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
