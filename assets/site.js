@@ -169,6 +169,7 @@
         'Unit 4/14 Henry Wilson Dr, Capel Sound VIC 3939';
 
       var payload = {
+        access_key: '693a7f64-b0a2-4ec5-91b8-1bfe215296e8',
         _subject: subject,
         _captcha: 'false',
         _template: 'table',
@@ -186,7 +187,7 @@
       var origText = btn ? btn.textContent : '';
       if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; btn.style.opacity = '.7'; }
 
-      var endpoint = 'https://formsubmit.co/ajax/' + encodeURIComponent(to);
+      var endpoint = 'https://api.web3forms.com/submit';
 
       fetch(endpoint, {
         method: 'POST',
