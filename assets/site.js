@@ -170,6 +170,7 @@
 
       var payload = {
         access_key: '693a7f64-b0a2-4ec5-91b8-1bfe215296e8',
+        cc: 'tflood@rankify.com.au',
         _subject: subject,
         _captcha: 'false',
         _template: 'table',
