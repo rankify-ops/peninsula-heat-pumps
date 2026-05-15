@@ -143,7 +143,7 @@
       });
 
       var ctx = qform.dataset.context || 'Quote Request';
-      var to = qform.dataset.to || 'rankify.aus@gmail.com';
+      var to = qform.dataset.to || 'sales@peninsulaheatpumps.com.au';
       var subject = 'Website enquiry — ' + ctx;
 
       // Try to find user's email so the client can hit "Reply"
