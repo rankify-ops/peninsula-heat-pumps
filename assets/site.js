@@ -171,16 +171,11 @@
       var payload = {
         access_key: '693a7f64-b0a2-4ec5-91b8-1bfe215296e8',
         cc: 'tflood@rankify.com.au',
-        _subject: subject,
-        _captcha: 'false',
-        _template: 'table',
-        _replyto: userEmail || '',
-        // formsubmit uses the field literally called "email" (lowercase) as the
-        // address for the autoresponse and reply-to header.
+        subject: subject,
+        replyto: userEmail || '',
         email: userEmail || '',
-        _autoresponse: autoResponse,
         Service: ctx,
-        Page: window.location.href
+        'Source Page': window.location.href
       };
       Object.keys(fd).forEach(function(k){ payload[k] = fd[k]; });
 
