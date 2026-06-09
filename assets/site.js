@@ -144,7 +144,6 @@
 
       var ctx = qform.dataset.context || 'Quote Request';
       var to = qform.dataset.to || 'sales@peninsulaheatpumps.com.au';
-      var subject = 'Website enquiry — ' + ctx;
 
       // Try to find user's email so the client can hit "Reply"
       var userEmail = '';
@@ -159,6 +158,11 @@
       Object.keys(fd).forEach(function(k){ if(/name/i.test(k) && !userName) userName = fd[k]; });
       var firstName = (userName.split(' ')[0] || 'there');
 
+      // Subject leads with the customer name so the inbox is searchable.
+      var subject = 'Website enquiry'
+        + (userName ? ' — ' + userName : '')
+        + ' — ' + ctx;
+
       var autoResponse =
         'Hi ' + firstName + ',\n\n' +
         'Thanks for your enquiry about ' + ctx + ' — we\'ve received it and will be in touch with your personalised quote and full rebate breakdown.\n\n' +
@@ -168,16 +172,38 @@
         '0422 946 213 | sales@peninsulaheatpumps.com.au\n' +
         'Unit 4/14 Henry Wilson Dr, Capel Sound VIC 3939';
 
+      // Split the collected form data into customer-contact fields vs. the
+      // qualifying questions, so customer details land at the top of the email.
+      var customerRx = /name|phone|mobile|email|suburb|postcode|address/i;
+      var customerOrder = ['name','phone','mobile','email','suburb','postcode','address'];
+      var customer = {}, other = {};
+      Object.keys(fd).forEach(function(k){
+        if(customerRx.test(k)) customer[k] = fd[k]; else other[k] = fd[k];
+      });
+      // Reorder customer keys so Name appears first, then Phone, Email, Suburb…
+      var customerSorted = {};
+      customerOrder.forEach(function(want){
+        Object.keys(customer).forEach(function(k){
+          if(new RegExp(want,'i').test(k) && !(k in customerSorted)) customerSorted[k] = customer[k];
+        });
+      });
+      Object.keys(customer).forEach(function(k){
+        if(!(k in customerSorted)) customerSorted[k] = customer[k];
+      });
+
       var payload = {
         access_key: '693a7f64-b0a2-4ec5-91b8-1bfe215296e8',
         cc: 'tflood@rankify.com.au',
         subject: subject,
         replyto: userEmail || '',
-        email: userEmail || '',
-        Service: ctx,
-        'Source Page': window.location.href
+        email: userEmail || ''
       };
-      Object.keys(fd).forEach(function(k){ payload[k] = fd[k]; });
+      // Customer details first — what the client wants at the top of the email.
+      Object.keys(customerSorted).forEach(function(k){ payload[k] = customerSorted[k]; });
+      // Then the service context and the qualifying answers.
+      payload['Service'] = ctx;
+      payload['Source Page'] = window.location.href;
+      Object.keys(other).forEach(function(k){ payload[k] = other[k]; });
 
       var btn = submitBtn();
       var origText = btn ? btn.textContent : '';
