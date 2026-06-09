@@ -162,10 +162,10 @@
       var autoResponse =
         'Hi ' + firstName + ',\n\n' +
         'Thanks for your enquiry about ' + ctx + ' — we\'ve received it and will be in touch with your personalised quote and full rebate breakdown.\n\n' +
-        'Need urgent help in the meantime? Call us on 0411 375 484 (Mon–Fri 8am–5pm).\n\n' +
+        'Need urgent help in the meantime? Call us on 0422 946 213 (Mon–Fri 8am–5pm).\n\n' +
         'Cheers,\n' +
         'The Peninsula Heat Pumps Team\n' +
-        '0411 375 484 | sales@peninsulaheatpumps.com.au\n' +
+        '0422 946 213 | sales@peninsulaheatpumps.com.au\n' +
         'Unit 4/14 Henry Wilson Dr, Capel Sound VIC 3939';
 
       var payload = {
@@ -196,13 +196,13 @@
         if(res.ok && res.j && (res.j.success === true || res.j.success === 'true' || /success/i.test(res.j.message||''))){
           cb(true);
         } else {
-          showError('Sorry, we couldn\'t send that automatically. Please call <a href="tel:0411375484" style="color:#dc2626;font-weight:700">0411 375 484</a> or email <a href="mailto:'+to+'" style="color:#dc2626;font-weight:700">'+to+'</a>.');
+          showError('Sorry, we couldn\'t send that automatically. Please call <a href="tel:0422946213" style="color:#dc2626;font-weight:700">0422 946 213</a> or email <a href="mailto:'+to+'" style="color:#dc2626;font-weight:700">'+to+'</a>.');
           cb(false);
         }
       })
       .catch(function(){
         if(btn){ btn.disabled = false; btn.textContent = origText; btn.style.opacity = ''; }
-        showError('Network issue. Please call <a href="tel:0411375484" style="color:#dc2626;font-weight:700">0411 375 484</a> or email <a href="mailto:'+to+'" style="color:#dc2626;font-weight:700">'+to+'</a>.');
+        showError('Network issue. Please call <a href="tel:0422946213" style="color:#dc2626;font-weight:700">0422 946 213</a> or email <a href="mailto:'+to+'" style="color:#dc2626;font-weight:700">'+to+'</a>.');
         cb(false);
       });
     };
