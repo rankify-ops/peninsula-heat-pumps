@@ -107,8 +107,7 @@ body.light-hero .why-sec .wcard{background:var(--g50)}
 .hero h1{font-size:clamp(2.6rem,5vw,3.6rem);line-height:1.06;margin-bottom:18px;font-weight:800;color:#fff}
 .hero h1 .em{color:var(--orange)}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:32px;max-width:520px}
-.hero-btns{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.hero-btns .btn-p,.hero-btns .btn-glass{width:100%;justify-content:center;padding:17px 30px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
 .btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:#fff;padding:15px 30px;border-radius:50px;font-weight:700;font-size:.95rem;border:none;cursor:pointer;font-family:inherit;transition:all .25s}
 .btn-p:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(235,65,15,.35)}
 .btn-glass{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);color:#fff;padding:15px 30px;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .25s}
@@ -508,6 +507,8 @@ textarea.finp{resize:vertical;min-height:90px}
   .qform-head{display:block}
   .hero-bg img{object-position:78% center}
   .phero{padding:130px 0 64px}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn-p,.hero-btns .btn-glass{width:100%;justify-content:center;padding:17px 30px}
 }
 @media(max-width:480px){
   .foot-g{grid-template-columns:1fr}
